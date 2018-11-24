@@ -1,0 +1,9 @@
+function delHtmlTag(str) {
+  var reg = getRegExp("<[^>]+>|&[^>]+;", "g");
+  var newStr = str.replace(reg, "");//去掉所有的html标记,并截取120字符
+  return newStr.substring(0, 120)
+}
+
+module.exports = {
+  delHtmlTag: delHtmlTag
+}

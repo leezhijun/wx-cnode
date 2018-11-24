@@ -1,0 +1,52 @@
+/**index.wxss**/
+page,
+.page,
+.page__bd{
+    height: 100%;
+}
+.page__bd{
+    padding-bottom: 0;
+}
+.weui-media-box__title{
+  font-size: 15px;
+}
+.weui-navbar{
+  background-color: #fefefe;
+}
+.weui-media-box__title .tab,.weui-media-box__title{
+  display: flex;
+  align-items: center;
+}
+.top,.tab{
+  font-size: 12px;
+  padding: 2rpx 14rpx;
+  margin-right: 4px;
+  border-radius: 2px; 
+}
+.tab{
+  background-color: #e8e8e8;
+}
+.top{
+  color: white;
+  background-color: #00c000;
+}
+.title{
+  flex: 1;
+  overflow: hidden;
+  word-wrap: no-wrap;
+  text-overflow: ellipsis;
+}
+.author{
+  width: 24px;
+  height: 24px;
+  margin-right: 4px;
+  border-radius: 50%;
+}
+.weui-media-box__info,.weui-media-box__info__meta{
+  display: flex;
+  align-items: center;
+  color: #666;
+}
+.weui-media-box__info__meta_extra{
+  font-size: 12px;
+}

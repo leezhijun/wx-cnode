@@ -1,0 +1,52 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-tab">
+      <view class="weui-navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+            <view class="weui-navbar__title">{{item}}</view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+      </view>
+      <view class="weui-tab__panel">
+        <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+          <block wx:for="{{topics[0].data}}" wx:key="id">
+            <import src="../../template/topicList.wxml"/>
+            <template is="topicList" data="{{...item}}"/>
+          </block>
+          <block wx:if="{{loadmore}}">
+            <view class="weui-loadmore">
+              <view class="weui-loading"></view>
+              <view class="weui-loadmore__tips">正在加载</view>
+            </view>
+          </block>
+        </view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+          <block wx:for="{{topics[1].data}}" wx:key="id">
+            <import src="../../template/topicList.wxml"/>
+            <template is="topicList" data="{{...item}}"/>
+          </block>
+        </view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
+          <block wx:for="{{topics[2].data}}" wx:key="id">
+            <import src="../../template/topicList.wxml"/>
+            <template is="topicList" data="{{...item}}"/>
+          </block>
+        </view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 3}}">
+          <block wx:for="{{topics[3].data}}" wx:key="id">
+            <import src="../../template/topicList.wxml"/>
+            <template is="topicList" data="{{...item}}"/>
+          </block>
+        </view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 4}}">
+          <block wx:for="{{topics[4].data}}" wx:key="id">
+            <import src="../../template/topicList.wxml"/>
+            <template is="topicList" data="{{...item}}"/>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

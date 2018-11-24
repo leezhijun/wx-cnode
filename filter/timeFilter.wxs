@@ -1,0 +1,6 @@
+function timeFilter(time){
+  return time.substring(0, 10)
+}
+module.exports = {
+  timeFilter: timeFilter
+}

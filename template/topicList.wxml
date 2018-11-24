@@ -1,0 +1,33 @@
+<template name="topicList">
+  <view class="weui-panel">
+    <view class="weui-panel__bd">
+      <view class="weui-media-box weui-media-box_text">
+        <view class="weui-media-box__title weui-media-box__title_in-text">
+          <block wx:if="{{top==true}}">
+            <text class="top">置顶</text>
+          </block>
+          <block wx:else>
+            <wxs module="tabFilter" src="../filter/tabFilter.wxs"></wxs>
+            <text class='tab'>{{tabFilter.tabFilter(tab)}}</text>
+          </block>
+          <text class="title">{{title}}</text>
+        </view>
+        <view class="weui-media-box__desc">
+          <wxs module="delHtmlTag" src="../filter/htmlFilter.wxs"></wxs>
+          <text>{{delHtmlTag.delHtmlTag(content)}}</text>
+        </view>
+        <view class="weui-media-box__info">
+          <view class="weui-media-box__info__meta">
+            <image class='author' src="{{author.avatar_url}}" /> {{author.loginname}}
+          </view>
+          <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">
+            浏览：{{visit_count}}
+          </view>
+          <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">
+            评论：{{reply_count}}
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
