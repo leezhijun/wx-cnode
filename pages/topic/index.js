@@ -1,18 +1,46 @@
 // pages/topic/index.js
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    topic:{},
+    article: {},
+    loadmore:true,
+    loaderror: false,
+    errMsg: '请求失败，刷新重试',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this
+    wx.request({
+      url: 'https://cnodejs.org/api/v1/topic/' + options.id, //仅为示例，并非真实的接口地址
+      method: 'GET',
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success(res) {
+        if (res.statusCode == 200){
+          let data = res.data.data
+          let article = app.towxml.toJson(data.content, 'html', that);
+          that.setData({
+            topic: data,
+            article,
+            loadmore:false
+          });
+        }else{
+          that.setData({
+            loadmore: false,
+            loaderror: true,
+          });
+        }
+      }
+    })
   },
 
   /**

@@ -4,13 +4,16 @@ Page({
   data: {
     tabs: ["全部", "精华", "分享", "问答", "招聘"],
     topics: [
-      {tab:'all',data: [],page: 0},
-      {tab: 'good',data: [],page: 0},
-      {tab: 'share',data: [],page: 0},
-      {tab: 'ask',data: [],page: 0},
-      {tab: 'job',data: [],page: 0}
+      {tab:'all',data: [],page: 1},
+      {tab: 'good',data: [],page: 1},
+      {tab: 'share',data: [],page: 1},
+      {tab: 'ask',data: [],page: 1},
+      {tab: 'job',data: [],page: 1}
     ],
     loadmore:false,
+    loadend:false,
+    loaderror:false,
+    errMsg:'请求失败，刷新重试',
     activeIndex: 0,
     sliderOffset: 0,
     sliderLeft: 0
@@ -25,31 +28,28 @@ Page({
         });
       }
     });
-    wx.showToast({
-      title: '数据加载中',
-      icon: 'loading',
-      duration: 3000
+    that.setData({
+      loadmore: true
     });
     wx.request({
       url: 'https://cnodejs.org/api/v1/topics',
       data: {
-        page: 0,
+        page: 1,
         tab: 'all',
         limit: 20,
       },
       success(res) {
-        console.log(res)
-        that.setData({
-          'topics[0].data' : res.data.data,
-        });
-      },
-      fail(res) {
-        console.log(res)
-        wx.showToast({
-          title: '请求失败',
-          icon: 'fail',
-          duration: 1500
-        });
+        if (res.statusCode==200){
+          that.setData({
+            'topics[0].data': res.data.data,
+            loadmore: false
+          });
+        }else{
+          that.setData({
+            loadmore: false,
+            loaderror: true,
+          });
+        }
       }
     })
   },
@@ -62,47 +62,45 @@ Page({
       activeIndex: e.currentTarget.id
     });
     if (topics[id].data.length==0){
-      wx.showToast({
-        title: '数据加载中',
-        icon: 'loading',
-        duration: 3000,
+      that.setData({
+        loadmore: true
       });
       let tab = topics[id].tab
       wx.request({
         url: 'https://cnodejs.org/api/v1/topics',
         data: {
-          page: 0,
+          page: 1,
           tab: tab,
           limit: 20,
         },
         success(res) {
-          let resData = 'topics[' + id + '].data'
-          that.setData({
-            [resData]: res.data.data,
-          });
-        },
-        fail(res) {
-          console.log(res)
-          wx.showToast({
-            title: '请求失败',
-            icon: 'fail',
-            duration: 1500
-          });
+          if (res.statusCode == 200) {
+            let resData = 'topics[' + id + '].data'
+            that.setData({
+              [resData]: res.data.data,
+              loadmore: false
+            });
+          } else {
+            that.setData({
+              loadmore: false,
+              loaderror: true,
+            });
+          }
         }
       })
     }
   },
-  onReachBottom: function(){
-    wx.showToast({
-      title: '数据加载中',
-      icon: 'loading',
-      duration: 3000
-    });
+  onReachBottom: function () {
+    console.log(123)
     var that = this
     let id = this.data.activeIndex
-    let tab = topics[id].tab
-    let page = topics[id].page + 1
-    let data = topics[id].data
+    let tab = this.data.topics[id].tab
+    let page = this.data. topics[id].page + 1
+    let data = this.data.topics[id].data
+    that.setData({
+      loadmore: true,
+      loadend:false
+    });
     wx.request({
       url: 'https://cnodejs.org/api/v1/topics',
       data: {
@@ -111,19 +109,30 @@ Page({
         limit: 20,
       },
       success(res) {
-        let resData = 'topics[' + id + '].data'
-        that.setData({
-          [resData]: data.concat(res.data.data),
-        });
-      },
-      fail(res) {
-        console.log(res)
-        wx.showToast({
-          title: '请求失败',
-          icon: 'fail',
-          duration: 1500
-        });
+        if (res.statusCode == 200) {
+          let resData = 'topics[' + id + '].data'
+          let newPage = 'topics[' + id + '].page'
+          that.setData({
+            [resData]: data.concat(res.data.data),
+            [newPage]: page,
+            loadmore: false
+          });
+          if (!res.data.data.length){
+            that.setData({
+              loadend: true
+            });
+          }
+        } else {
+          that.setData({
+            loadmore: false,
+            loaderror: true,
+          });
+        }
       }
     })
-  }
+  },
+  onPullDownRefresh: function(){
+    console.log(456)
+
+  },
 });

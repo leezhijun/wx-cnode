@@ -1,1 +1,24 @@
 /* pages/topic/index.wxss */
+@import '/towxml/style/theme/light.wxss';
+.weui-article__h1{
+  margin-bottom: 0.5em;
+  font-size: 16px;
+}
+.weui-article__title{
+  padding-bottom: 0.5em;
+  margin-bottom: 0.5em;
+  font-size: 13px;
+  color: #666;
+  border-bottom: 1rpx solid #eee;
+}
+.top{
+  font-size: 14px;
+  padding: 2px 4px;
+  margin-right: 2px;
+  border-radius: 2px; 
+  color: white;
+  background-color: #00c000;
+}
+.h2w__main image{
+  width: 100%;
+}

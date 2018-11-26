@@ -12,7 +12,8 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "Cnode社区(个人版)",
     "navigationBarTextStyle": "black",
-    "onReachBottomDistance": "250px"
+    "onReachBottomDistance": 50,
+    "enablePullDownRefresh":true
   },
   "tabBar": {
     "list": [

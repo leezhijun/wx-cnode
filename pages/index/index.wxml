@@ -21,11 +21,32 @@
               <view class="weui-loadmore__tips">正在加载</view>
             </view>
           </block>
+          <block wx:if="{{loadend}}">
+            <view class="weui-loadmore weui-loadmore_line">
+              <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+            </view>
+          </block>
+          <block wx:if="{{loaderror}}">
+            <view class="weui-loadmore weui-loadmore_line">
+              <view class="weui-loadmore__tips weui-loadmore__tips_in-line">{{errMsg}}</view>
+            </view>
+          </block>
         </view>
         <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
           <block wx:for="{{topics[1].data}}" wx:key="id">
             <import src="../../template/topicList.wxml"/>
             <template is="topicList" data="{{...item}}"/>
+          </block>
+          <block wx:if="{{loadmore}}">
+            <view class="weui-loadmore">
+              <view class="weui-loading"></view>
+              <view class="weui-loadmore__tips">正在加载</view>
+            </view>
+          </block>
+          <block wx:if="{{loadend}}">
+            <view class="weui-loadmore weui-loadmore_line">
+              <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+            </view>
           </block>
         </view>
         <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
@@ -33,17 +54,50 @@
             <import src="../../template/topicList.wxml"/>
             <template is="topicList" data="{{...item}}"/>
           </block>
+          <block wx:if="{{loadmore}}">
+            <view class="weui-loadmore">
+              <view class="weui-loading"></view>
+              <view class="weui-loadmore__tips">正在加载</view>
+            </view>
+          </block>
+          <block wx:if="{{loadend}}">
+            <view class="weui-loadmore weui-loadmore_line">
+              <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+            </view>
+          </block>
         </view>
         <view class="weui-tab__content" hidden="{{activeIndex != 3}}">
           <block wx:for="{{topics[3].data}}" wx:key="id">
             <import src="../../template/topicList.wxml"/>
             <template is="topicList" data="{{...item}}"/>
           </block>
+          <block wx:if="{{loadmore}}">
+            <view class="weui-loadmore">
+              <view class="weui-loading"></view>
+              <view class="weui-loadmore__tips">正在加载</view>
+            </view>
+          </block>
+          <block wx:if="{{loadend}}">
+            <view class="weui-loadmore weui-loadmore_line">
+              <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+            </view>
+          </block>
         </view>
         <view class="weui-tab__content" hidden="{{activeIndex != 4}}">
           <block wx:for="{{topics[4].data}}" wx:key="id">
             <import src="../../template/topicList.wxml"/>
             <template is="topicList" data="{{...item}}"/>
+          </block>
+          <block wx:if="{{loadmore}}">
+            <view class="weui-loadmore">
+              <view class="weui-loading"></view>
+              <view class="weui-loadmore__tips">正在加载</view>
+            </view>
+          </block>
+          <block wx:if="{{loadend}}">
+            <view class="weui-loadmore weui-loadmore_line">
+              <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+            </view>
           </block>
         </view>
       </view>

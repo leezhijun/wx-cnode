@@ -1,2 +1,39 @@
-<!--pages/topic/index.wxml-->
-<text>pages/topic/index.wxml</text>
+<view class="page">
+  <block wx:if="{{loadmore}}">
+    <view class="weui-loadmore">
+      <view class="weui-loading"></view>
+      <view class="weui-loadmore__tips">正在加载</view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="page__bd">
+      <view class="weui-article">
+        <view class="weui-article__h1">
+          <block wx:if="{{topic.top==true}}">
+            <text class="top">置顶</text>
+          </block>
+          {{topic.title}}</view>
+        <view class="weui-article__section">
+          <view class="weui-article__title">
+            作者：{{topic.author.loginname}} | 浏览：{{topic.visit_count}} | 回复：{{topic.reply_count}}
+            <view>
+              <wxs module="timeFilter" src="../../filter/timeFilter.wxs"></wxs>
+              <text>发表：{{timeFilter.timeFilter(topic.create_at)}}</text>
+            </view>
+          </view>
+          <view class="weui-article__section">
+            <view class="weui-article__p">
+              <import src="/towxml/entry.wxml" />
+              <template is="entry" data="{{...article}}" />
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <block wx:if="{{loaderror}}">
+    <view class="weui-loadmore weui-loadmore_line">
+      <view class="weui-loadmore__tips weui-loadmore__tips_in-line">{{errMsg}}</view>
+    </view>
+  </block>
+</view>

@@ -10,7 +10,7 @@
             <wxs module="tabFilter" src="../filter/tabFilter.wxs"></wxs>
             <text class='tab'>{{tabFilter.tabFilter(tab)}}</text>
           </block>
-          <text class="title">{{title}}</text>
+          <navigator url="/pages/topic/index?id={{id}}" hover-class="navigator-hover"><text class="title">{{title}}</text></navigator>
         </view>
         <view class="weui-media-box__desc">
           <wxs module="delHtmlTag" src="../filter/htmlFilter.wxs"></wxs>
