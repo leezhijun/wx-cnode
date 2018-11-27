@@ -1,2 +1,19 @@
-<!--pages/login/index.wxml-->
-<text>pages/login/index.wxml</text>
+<view class="page">
+  <view class="page__hd">
+    <view class="page__title">请登录</view>
+    <view class="page__desc">您尚未登录，请登陆后进行相关操作</view>
+  </view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">令牌</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" name='accesstoken' bindinput='handleInput' placeholder="accesstoken" />
+      </view>
+    </view>
+  </view>
+  <view class="weui-btn-area">
+    <button class="weui-btn" type="primary" bindtap="handleLogin">确定</button>
+  </view>
+</view>
