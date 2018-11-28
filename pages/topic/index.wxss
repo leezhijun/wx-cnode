@@ -1,24 +1,53 @@
 /* pages/topic/index.wxss */
 @import '/towxml/style/theme/light.wxss';
-.weui-article__h1{
+.page__bd{
+  padding-bottom: 10rpx;
+}
+.weui-article__h1 {
   margin-bottom: 0.5em;
   font-size: 16px;
 }
-.weui-article__title{
+
+.weui-article__title {
   padding-bottom: 0.5em;
   margin-bottom: 0.5em;
   font-size: 13px;
   color: #666;
   border-bottom: 1rpx solid #eee;
 }
-.top{
+
+.top ,.tab{
   font-size: 14px;
   padding: 2px 4px;
   margin-right: 2px;
-  border-radius: 2px; 
+  border-radius: 2px;
   color: white;
   background-color: #00c000;
 }
-.h2w__main image{
+.tab{
+  color: #666;
+  background-color: #e8e8e8;
+}
+.weui-article{
+  padding-bottom: 0;
+}
+.h2w__main image {
   width: 100%;
+}
+.weui-media-box__title{
+  font-size: 15px;
+  color: #666;
+}
+.weui-media-box__title image {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+}
+.button-sp-area{
+  padding-top: 16px;
+  display: flex;
+  justify-content:flex-end;
+}
+.weui-textarea{
+  font-size: 15px;
 }

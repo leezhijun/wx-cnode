@@ -1,2 +1,5 @@
 /**app.wxss**/
 @import 'dist/app.wxss';
+.weui-cell_primary{
+  font-size: 13px;
+}

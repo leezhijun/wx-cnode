@@ -12,12 +12,16 @@
           <block wx:if="{{topic.top==true}}">
             <text class="top">置顶</text>
           </block>
+          <block wx:else>
+            <wxs module="tabFilter" src="../../filter/tabFilter.wxs"></wxs>
+            <text class='tab'>{{tabFilter.tabFilter(topic.tab)}}</text>
+          </block>
           {{topic.title}}</view>
         <view class="weui-article__section">
           <view class="weui-article__title">
             作者：{{topic.author.loginname}} | 浏览：{{topic.visit_count}} | 回复：{{topic.reply_count}}
             <view>
-              <wxs module="timeFilter" src="../../filter/timeFilter.wxs"></wxs>
+              <wxs module="timeFilter" src="../../filter/topicFilter.wxs"></wxs>
               <text>发表：{{timeFilter.timeFilter(topic.create_at)}}</text>
             </view>
           </view>
@@ -29,6 +33,49 @@
           </view>
         </view>
       </view>
+      <view class="weui-panel">
+        <view class="weui-panel__hd">{{topic.reply_count}}回复</view>
+        <view class="weui-panel__bd">
+          <block wx:for="{{topic.replies}}" wx:key="*this">
+            <view class="weui-media-box weui-media-box_text">
+              <view class="weui-media-box__title weui-media-box__title_in-text" id='{{item.id}}'>
+                <image src='{{item.author.avatar_url}}' /> {{item.author.loginname}}
+              </view>
+              <view class="weui-media-box__desc">
+                <import src="/towxml/entry.wxml" />
+                <template is="entry" data="{{...item.content}}" />
+              </view>
+              <view class="weui-media-box__info">
+                <view class="weui-media-box__info__meta">点赞：
+                  <wxs module="lengthFilter" src="../../filter/topicFilter.wxs"></wxs>
+                  <text>{{lengthFilter.lengthFilter(item.ups)}}</text>
+                </view>
+                <view class="weui-media-box__info__meta">时间：
+                  <wxs module="timeFilter" src="../../filter/topicFilter.wxs"></wxs>
+                  <text>{{timeFilter.timeFilter(item.create_at)}}</text>
+                </view>
+
+              </view>
+            </view>
+          </block>
+        </view>
+      </view>
+      <block wx:if="{{accesstoken}}">
+        <view class="weui-panel__hd">添加回复</view>
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell">
+            <view class="weui-cell__bd">
+              <textarea class="weui-textarea" bindinput='handleInput' id='content' value='{{content}}' placeholder="请输入评论内容" style="height: 3.3em" />
+              <view class="weui-textarea-counter"></view>
+            </view>
+          </view>
+        </view>
+        <view class="page__bd page__bd_spacing">
+          <view class="button-sp-area">
+              <button class="weui-btn mini-btn" type="default" bindtap="handleSubmit" size="mini">提交</button>
+          </view>
+        </view>
+      </block>
     </view>
   </block>
   <block wx:if="{{loaderror}}">

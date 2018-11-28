@@ -1,0 +1,13 @@
+function timeFilter(time){
+  var timeYMD =  time.substring(0, 10)
+  var timeHMS = time.substring(11, 19)
+  return (timeYMD +" "+ timeHMS)
+}
+function lengthFilter(arr){
+  return arr.length
+}
+
+module.exports = {
+  timeFilter: timeFilter,
+  lengthFilter: lengthFilter
+}

@@ -1,1 +1,4 @@
 /* pages/message/index.wxss */
+.page__hd{
+  padding: 18px;
+}

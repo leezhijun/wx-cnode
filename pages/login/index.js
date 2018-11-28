@@ -18,6 +18,7 @@ Page({
   },
   handleLogin: function(){
     let accesstoken = this.data.accesstoken
+    let that = this
     wx.showToast({
       title: '数据加载中',
       icon: 'loading',
@@ -38,6 +39,9 @@ Page({
           });
           app.globalData.accesstoken = accesstoken
           app.globalData.username = res.data.loginname
+          wx.switchTab({
+            url: '/pages/user/index'
+          })
         } else {
           wx.showToast({
             title: '登录失败',

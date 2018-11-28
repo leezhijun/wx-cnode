@@ -5,8 +5,10 @@ App({
    
   },
   globalData: {
-    username: 'leezhijun',
-    accesstoken: '3e37c62b-4ac9-4440-a5de-9dc385750b12'
+    // username: 'leezhijun',
+    // accesstoken: '3e37c62b-4ac9-4440-a5de-9dc385750b12',
+    username: null,
+    accesstoken: null
   },
   towxml: new Towxml()
 })
