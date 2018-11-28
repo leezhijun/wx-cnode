@@ -31,7 +31,6 @@ Page({
       },
       success(res) {
         if (res.statusCode == 200) {
-          console.log(res)
           wx.showToast({
             title: '登录成功',
             icon: 'success',

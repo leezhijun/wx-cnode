@@ -1,8 +1,8 @@
 var app = getApp();
 Page({
   data: {
-    username: app.globalData.username,
-    accesstoken: app.globalData.accesstoken,
+    username: '',
+    accesstoken: '',
     accounts: ["分享", "问答", "测试"],
     accountIndex: 0,
     tabs:['share','ask','dev'],
@@ -13,7 +13,10 @@ Page({
   onLoad: function (options) {
     let { username, accesstoken } = app.globalData
     let that = this
-    console.log(app)
+    this.setData({
+      username,
+      accesstoken
+    })
     if (!username) {
       wx.reLaunch({
         url: '/pages/login/index'

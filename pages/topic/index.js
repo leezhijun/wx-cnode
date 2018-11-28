@@ -6,8 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    username: app.globalData.username,
-    accesstoken: app.globalData.accesstoken,
+    username: '',
+    accesstoken: '',
     topic_id:null,
     topic: {},
     article: {},
@@ -21,7 +21,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    var that = this
+    let { username, accesstoken } = app.globalData
+    let that = this
+    this.setData({
+      username,
+      accesstoken
+    })
     wx.request({
       url: 'https://cnodejs.org/api/v1/topic/' + options.id, //仅为示例，并非真实的接口地址
       method: 'GET',

@@ -6,8 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    username: app.globalData.username,
-    accesstoken: app.globalData.accesstoken,
+    username: '',
+    accesstoken: '',
     userinfo:{},
     loadmore: true,
     loaderror: false,
@@ -18,10 +18,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let app = getApp();
-    console.log(app)
     let { username, accesstoken } = app.globalData
     let that = this
+    this.setData({
+      username,
+      accesstoken
+    })
     if(username){
       wx.request({
         url: 'https://cnodejs.org/api/v1/user/' + username,
