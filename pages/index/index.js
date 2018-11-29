@@ -91,7 +91,6 @@ Page({
     }
   },
   onReachBottom: function () {
-    console.log(123)
     var that = this
     let id = this.data.activeIndex
     let tab = this.data.topics[id].tab

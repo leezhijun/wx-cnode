@@ -19,19 +19,27 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页"
+        "text": "首页",
+        "iconPath": "/public/icon1.png",
+        "selectedIconPath": "/public/icon11.png"
       },
       {
         "pagePath": "pages/publish/index",
-        "text": "发表"
+        "text": "发表",
+        "iconPath": "/public/icon2.png",
+        "selectedIconPath": "/public/icon22.png"
       },
       {
         "pagePath": "pages/message/index",
-        "text": "消息"
+        "text": "消息",
+        "iconPath": "/public/icon3.png",
+        "selectedIconPath": "/public/icon33.png"
       },
       {
         "pagePath": "pages/user/index",
-        "text": "我的"
+        "text": "我的",
+        "iconPath": "/public/icon4.png",
+        "selectedIconPath": "/public/icon44.png"
       }
     ]
   }

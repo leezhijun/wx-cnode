@@ -16,4 +16,7 @@
   <view class="weui-btn-area">
     <button class="weui-btn" type="primary" bindtap="handleLogin">确定</button>
   </view>
+  <view class="weui-btn-area">
+    <button class="weui-btn" type="default" bindtap="goHome">返回首页</button>
+  </view>
 </view>

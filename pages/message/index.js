@@ -29,7 +29,6 @@ Page({
           accesstoken: accesstoken,
         },
         success(res) {
-          console.log(res)
           if (res.statusCode == 200) {
             that.setData({
               messages: res.data.data,
@@ -48,9 +47,9 @@ Page({
         }
       })
     } else {
-      // wx.reLaunch({
-      //   url: '/pages/login/index'
-      // })
+      wx.reLaunch({
+        url: '/pages/login/index'
+      })
     }
   },
 })
