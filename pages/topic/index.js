@@ -136,6 +136,15 @@ Page({
       }
     })
   },
+  __bind_tap:function(e){
+    console.log(e.target.dataset._el.attr.href)
+    if (e.target.dataset._el.tag === "navigator"){
+      // wx.setClipboardData(e.target.dataset._el.attr.href)
+      wx.setClipboardData({
+        data: e.target.dataset._el.attr.href
+      })
+    }
+  },
   /**
    * 用户点击右上角分享
    */
